@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RDP Attack Results</title>
+    <script src="/gui/js/vue.global.prod.js"></script>
+    <style>
+        .result-card { margin: 20px; padding: 15px; border: 1px solid #ccc; }
+        .success { background-color: #e8f5e9; }
+        .error { background-color: #ffebee; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>RDP Attack Results</h1>
+        <div v-for="result in results" :key="result.agent_id" 
+             :class="['result-card', result.status === 0 ? 'success' : 'error']">
+            <h3>{{ result.target }} ({{ result.agent_id }})</h3>
+            <p>Status: {{ statusText(result.status) }}</p>
+            <p>Message: {{ result.message }}</p>
+            <img v-if="result.status === 0" :src="'/rdp/screens/' + result.agent_id + '.png'" 
+                 style="max-width: 600px;" />
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    results: []
+                }
+            },
+            mounted() {
+                this.loadResults();
+            },
+            methods: {
+                async loadResults() {
+                    try {
+                        const response = await fetch('/plugin/rdp/results');
+                        const data = await response.json();
+                        this.results = data.results;
+                    } catch (error) {
+                        console.error('Error loading results:', error);
+                    }
+                },
+                statusText(code) {
+                    return code === 0 ? 'Success' : 'Failed';
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
+																									 
