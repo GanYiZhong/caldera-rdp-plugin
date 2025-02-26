@@ -1,4 +1,9 @@
-# Caldera RDP Plugin
+#DO NOT TRY TO USE THIS YET
+#DO NOT TRY TO USE THIS YET
+#DO NOT TRY TO USE THIS YET
+#-----------------------------
+
+#Caldera RDP Plugin
 
 A Caldera plugin for RDP attack simulation and screen capture. This plugin provides capabilities for performing RDP attacks, capturing remote desktop screenshots, and displaying results in the Caldera UI.
 
@@ -22,7 +27,9 @@ git clone https://your-repo/rdp_plugin.git
 pip install -r rdp_plugin/requirements.txt
 ```
 
-3. Add the plugin to your Caldera configuration (`conf/default.yml`):
+3. Add the plugin to your Caldera configuration (`conf/default.yml`)
+4.
+5. :
 ```yaml
 plugins:
   - rdp_plugin
