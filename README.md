@@ -1,7 +1,5 @@
 #DO NOT TRY TO USE THIS YET
-#DO NOT TRY TO USE THIS YET
-#DO NOT TRY TO USE THIS YET
-#-----------------------------
+
 
 #Caldera RDP Plugin
 
